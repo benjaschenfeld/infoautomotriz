@@ -3,12 +3,12 @@ require_once './app/models/autos.model.php';
 require_once './app/models/categorias.model.php';
 require_once './app/models/user.model.php';
 require_once './app/views/automotriz.view.php';
-
+ 
 class AutosController {
     
     private $autosModel;
     private $categoriasModel;
-    private $userModel;
+      private $userModel;
     private $automotrizView;
 
     public function __construct(){
@@ -16,15 +16,14 @@ class AutosController {
         $this->categoriasModel = new CategoriasModel();
         $this->userModel = new UserModel();
         $this->automotrizView = new AutomotrizView();
-        //$this->motor = new Motor();
-    }
+    }  
 
     public function showHome() {
         session_start();
         $autos = $this->autosModel->getAllWithCategory();
         $categorias = $this->categoriasModel->getByName();
         $this->automotrizView->showAutos($autos, $categorias);
-    }
+    } 
 
     public function showDetalle($id_auto) {
         $detalle = $this->autosModel->getDetalle($id_auto);

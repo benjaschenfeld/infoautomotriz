@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-09-2023 a las 22:23:21
+-- Tiempo de generación: 02-11-2023 a las 20:17:05
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -29,22 +29,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `autos` (
   `id_auto` int(255) NOT NULL,
-  `nombre` varchar(25) NOT NULL,
+  `nombres` varchar(25) NOT NULL,
   `anio` int(25) NOT NULL,
   `motor` varchar(25) NOT NULL,
-  `color` varchar(100) NOT NULL,
   `marca` varchar(100) NOT NULL,
-  `id_categoria_ext` int(11) NOT NULL
+  `id_categoria_ext` int(11) NOT NULL,
+  `caracteristicas` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `autos`
 --
 
-INSERT INTO `autos` (`id_auto`, `nombre`, `anio`, `motor`, `color`, `marca`, `id_categoria_ext`) VALUES
-(3, 'x6', 2018, 'v8', 'negro', 'BMW', 1),
-(4, 'Fluence', 2014, '1.6', 'Blanco', 'Renault', 2),
-(5, 'Fluence', 2014, '1.6', 'Blanco', 'Renault', 2);
+INSERT INTO `autos` (`id_auto`, `nombres`, `anio`, `motor`, `marca`, `id_categoria_ext`, `caracteristicas`) VALUES
+(4, 'Fluence', 2014, '1.6', 'Renault', 3, 'lololololololol'),
+(14, 'PRUEBA', 2022, '2.3', 'holaaaa', 3, 'jijiji9ii'),
+(15, 'juan', 2002, '1.8', 'asasasas', 2, 'oooooooo'),
+(16, 'asasass', 2022, '1.6', 'asasasassasasaasas', 11, 'asasaas');
 
 -- --------------------------------------------------------
 
@@ -63,10 +64,35 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`, `caracteristicas`) VALUES
-(1, 'Coupe', 'No tiene cola, estructura rigida'),
 (2, 'sedan', '5 puertas'),
 (3, 'Deportivos', 'Tienen mejor aceleración, velocidad máxima, adherencia al asfalto, mejor sistema de frenado y una mayor potencia que otros coches convencionales, lo que se logra mediante motores, frenos, suspensión, caja de cambios, neumáticos, chasis y tipo de carrocería especiales.'),
-(4, 'Deportivos', 'Tienen mejor aceleración, velocidad máxima, adherencia al asfalto, mejor sistema de frenado y una mayor potencia que otros coches convencionales, lo que se logra mediante motores, frenos, suspensión, caja de cambios, neumáticos, chasis y tipo de carrocería especiales.');
+(7, 'SDSADSAD', 'SADASDSAD'),
+(11, 'Coupe', 'No tiene cola, suele ser de dos puertas');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `user`
+--
+
+CREATE TABLE `user` (
+  `id_usuario` int(11) NOT NULL,
+  `email` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `pasword` varchar(255) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`id_usuario`, `email`, `pasword`) VALUES
+(1, 'benjaminschenfeld2003@gmail.com', 'hola'),
+(2, 'samuelgamondi@gmail.com', 'hola'),
+(3, 'ssssddd', '$2y$10$n3ujp9.dmB19IPmlcRG6OOTClAoNXcsaFwH9cLCdiKqBClSVrfAZS'),
+(4, 'luchito@gmail.com', '$2y$10$dhNgi1cnVDxuzW5RHzrj6evJSDukQLMtNuxu0WbfivppeNrkXN1iq'),
+(5, 'luchito@gmail.com', '$2y$10$wYLb.gcKAY4qDZ3uO36O.OmouUoLFU5fIFMHnuD/nzTeXsxZWipSK'),
+(6, 'bueno@12.com', '$2y$10$XwadplcZyxKg/HIJc1hXy.2AfkMDCo.gYDOGPhgWYhzKwuvtdZ9Tm'),
+(7, 'benja@gmail.com', '$2y$10$LDP0cThYr2h.kTooiJ.1Y.vwsvt9MgoHwt9OMDgnvsoT1cB1piXdK');
 
 --
 -- Índices para tablas volcadas
@@ -86,6 +112,12 @@ ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
+-- Indices de la tabla `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -93,13 +125,19 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `autos`
 --
 ALTER TABLE `autos`
-  MODIFY `id_auto` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_auto` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_categoria` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
